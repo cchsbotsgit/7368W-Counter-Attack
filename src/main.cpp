@@ -20,10 +20,16 @@ motor_group initalscoremech (intake);
 motor_group bodyscoremeck (body);
 drivetrain Train = drivetrain(leftdrivetrain, rightdrivetrain, 3.25 * M_PI, 12.5, 11, inches, 1.5);
 digital_out Matchloader = digital_out(Brain.ThreeWirePort.A);
+//DO NOT REMOVE
+digital_out hook = digital_out(Brain.ThreeWirePort.B);
 
-// this is the match loader code
+// this is the matchloader code
 void MatchloaderToggle() {
   Matchloader.set(!Matchloader.value());
+}
+//this is for de-score hook DO NOT REMOVE
+void hookToggle() {
+  hook.set(!hook.value());
 }
 
 void pre_auton(void) {
@@ -73,15 +79,19 @@ void redblueleft() {
    Train.driveFor(-9, inches);
    Train.turnFor(55, degrees);
    Train.driveFor(26.5, inches);
-   body.spinFor(1, vex::timeunits seconds);
+   body.spinFor(1, vex::timeUnits::sec);
    body.spin(reverse);
    director.spin(forward);
 
 
 }
-
+void Skillsauton() {
+  Train.setDriveVelocity(100, percent);
+  Train.driveFor(12, inches);
+  Train.driveFor(36, inches)
+}
 void autonomous(void) {
-  // blueredright();
+  //blueredright();
   // skillsplaceholder();
   // compplaceholder();
   redblueleft();
@@ -122,6 +132,7 @@ int main() {
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
   Controller.ButtonB.pressed(MatchloaderToggle);
+  Controller.ButtonY.pressed(hookToggle);
 
   pre_auton();
 
