@@ -88,7 +88,7 @@ void redblueleft() {
 void Skillsauton() {
   Train.setDriveVelocity(100, percent);
   Train.driveFor(12, inches);
-  Train.driveFor(36, inches)
+  Train.driveFor(36, inches);
 }
 void autonomous(void) {
   //blueredright();
