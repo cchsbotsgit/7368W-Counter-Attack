@@ -20,7 +20,6 @@ motor_group initalscoremech (intake);
 motor_group bodyscoremeck (body);
 drivetrain Train = drivetrain(leftdrivetrain, rightdrivetrain, 3.25 * M_PI, 12.5, 11, inches, 1.5);
 digital_out Matchloader = digital_out(Brain.ThreeWirePort.A);
-//DO NOT REMOVE
 digital_out hook = digital_out(Brain.ThreeWirePort.B);
 
 // this is the matchloader code
