@@ -22,11 +22,9 @@ drivetrain Train = drivetrain(leftdrivetrain, rightdrivetrain, 3.25 * M_PI, 12.5
 digital_out Matchloader = digital_out(Brain.ThreeWirePort.A);
 digital_out hook = digital_out(Brain.ThreeWirePort.B);
 
-// this is the matchloader code
 void MatchloaderToggle() {
   Matchloader.set(!Matchloader.value());
 }
-//this is for de-score hook DO NOT REMOVE
 void hookToggle() {
   hook.set(!hook.value());
 }
